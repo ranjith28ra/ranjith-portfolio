@@ -1,282 +1,564 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Ranjith P | Portfolio</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
+
     :root {
+
       --bg-dark: linear-gradient(135deg, #1f1c2c, #928DAB);
+
       --bg-light: #f7f7f7;
+
       --text-dark: #ffffff;
+
       --text-light: #111;
+
       --accent-color: #00ffe7;
+
       --hover-color: #ff4dff;
+
     }
+
+
 
     body {
+
       margin: 0;
+
       font-family: 'Poppins', sans-serif;
+
       background: var(--bg-dark);
+
       color: var(--text-dark);
+
       overflow-x: hidden;
+
       transition: background 0.5s, color 0.5s;
+
     }
+
+
 
     body.light-mode {
+
       background: var(--bg-light);
+
       color: var(--text-light);
+
     }
+
+
 
     header {
+
       background: rgba(0, 0, 0, 0.6);
+
       padding: 20px;
+
       text-align: center;
+
       font-family: 'Orbitron', sans-serif;
+
       position: relative;
+
     }
+
+
 
     .toggle-btn {
+
       position: absolute;
+
       top: 20px;
+
       right: 20px;
+
       background: none;
+
       border: none;
+
       font-size: 1.5rem;
+
       cursor: pointer;
+
       color: var(--accent-color);
+
     }
+
+
 
     h1 {
+
       font-size: 2.5rem;
+
       margin: 0;
+
       animation: glow 2s ease-in-out infinite alternate;
+
     }
+
+
 
     @keyframes glow {
+
       from { text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7; }
+
       to { text-shadow: 0 0 20px #ff4dff, 0 0 30px #ff4dff; }
+
     }
+
+
 
     section {
+
       padding: 40px 20px;
+
       max-width: 1000px;
+
       margin: auto;
+
     }
+
+
 
     .project {
+
       background: rgba(255, 255, 255, 0.1);
+
       border-radius: 12px;
+
       padding: 20px;
+
       margin-bottom: 30px;
+
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+
       transition: transform 0.3s, box-shadow 0.3s;
+
       perspective: 1000px;
+
     }
+
+
 
     .project:hover {
+
       transform: rotateY(3deg) scale(1.03);
+
       box-shadow: 0 10px 30px rgba(0, 255, 231, 0.4);
+
     }
+
+
 
     .view-btn {
+
       display: inline-block;
+
       margin-top: 10px;
+
       padding: 8px 16px;
+
       background-color: var(--accent-color);
+
       color: #000;
+
       border: none;
+
       border-radius: 5px;
+
       cursor: pointer;
+
       font-weight: bold;
+
       transition: background-color 0.3s ease;
+
     }
+
+
 
     .view-btn:hover {
+
       background-color: var(--hover-color);
+
       color: white;
+
     }
+
+
 
     .modal {
+
       display: none;
+
       position: fixed;
+
       z-index: 1000;
+
       left: 0;
+
       top: 0;
+
       width: 100%;
+
       height: 100%;
+
       overflow: auto;
+
       background-color: rgba(0,0,0,0.9);
+
     }
+
+
 
     .modal-content {
+
       margin: 5% auto;
+
       display: block;
+
       max-width: 90%;
+
       max-height: 80%;
+
       animation: zoomIn 0.5s ease;
+
     }
+
+
 
     @keyframes zoomIn {
+
       from { transform: scale(0.5); opacity: 0; }
+
       to { transform: scale(1); opacity: 1; }
+
     }
+
+
 
     .close {
+
       position: absolute;
+
       top: 20px;
+
       right: 35px;
+
       color: white;
+
       font-size: 40px;
+
       font-weight: bold;
+
       cursor: pointer;
+
       transition: color 0.3s;
+
     }
+
+
 
     footer {
+
       text-align: center;
+
       padding: 20px;
+
       background: rgba(0, 0, 0, 0.4);
+
       font-size: 0.9rem;
+
     }
+
+
 
     a {
+
       color: var(--accent-color);
+
       text-decoration: none;
+
     }
+
+
 
     a:hover {
+
       color: var(--hover-color);
+
     }
+
+
 
     #particles-js {
+
       position: fixed;
+
       top: 0;
+
       left: 0;
+
       width: 100%;
+
       height: 100%;
+
       z-index: -1;
+
     }
+
+
 
     /* Light mode tweaks */
+
     body.light-mode .project {
+
       background: rgba(0, 0, 0, 0.05);
+
     }
+
+
 
     body.light-mode .close,
+
     body.light-mode i,
+
     body.light-mode .project h3 {
+
       color: var(--text-light);
+
     }
+
   </style>
+
 </head>
+
 <body>
+
   <div id="particles-js"></div>
+
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
   <script>
+
     particlesJS("particles-js", {
+
       particles: {
+
         number: { value: 80 },
+
         size: { value: 3 },
+
         color: { value: ["#00ffe7", "#ff4dff"] },
+
         line_linked: {
+
           enable: true,
+
           distance: 150,
+
           color: "#ffffff",
+
           opacity: 0.4,
+
           width: 1
+
         },
+
         move: {
+
           enable: true,
+
           speed: 3
+
         }
+
       }
+
     });
+
   </script>
+
+
 
   <header>
+
     <h1>Ranjith P</h1>
+
     <p>Electronics & IoT Enthusiast | ESP32 Developer</p>
+
     <button class="toggle-btn" onclick="toggleMode()" id="modeToggle">🌙</button>
+
   </header>
 
+
+
   <section>
+
     <h2>About Me</h2>
+
     <p>I enjoy working on electronics and IoT projects, especially using ESP32 and sensors. I like building smart systems that can track things like water levels, temperature, and air quality. I use platforms like Blynk and Google Sheets to monitor and store data in real time. I'm always interested in learning new things and improving my projects.</p>
+
   </section>
 
+
+
   <section>
+
     <h2>Projects</h2>
+
     <div class="project">
+
       <h3>AquaSense</h3>
+
       <p>A complete ESP32-based IoT system that monitors water levels using an ultrasonic sensor and checks environmental conditions using DHT11, MQ-135, DS18B20, and a TDS sensor. Data is sent to Blynk and Google Sheets with alerts for abnormal water levels.</p>
-      <button class="view-btn" onclick="openModal('images/aquasense.jpg')">View AquaSense Image</button>
+
+      <button class="view-btn" onclick="openModal('aquasense.jpg')">View AquaSense Image</button>
+
     </div>
+
+
 
     <div class="project">
+
       <h3>Bus Indication for Blind People</h3>
+
       <p>An assistive device using RFID and voice output to help visually impaired individuals identify approaching buses. Enhances independence and accessibility.</p>
-      <button class="view-btn" onclick="openModal('images/bus-indicator.png')">View Bus Indication Image</button>
+
+      <button class="view-btn" onclick="openModal('bus-indicator.png')">View Bus Indication Image</button>
+
     </div>
+
   </section>
 
+
+
   <section>
+
     <h2>Resume</h2>
-    <p><a href="/mnt/data/Resume%20RANJITH%20P%20(1).pdf" target="_blank">Download My Resume (PDF)</a></p>
+
+    <a href="Resume%20RANJITH%20P%20(1).pdf" download target="_blank">Download My Resume (PDF)
+    </a>
+  </a>
   </section>
 
+
+
   <section>
+
     <h2>Education</h2>
+
     <p><strong>B.E., Electronics and Communication Engineering</strong><br />Erode Sengunthar Engineering College, 2022 – 2026 (CGPA: 7.3)</p>
-    <p><strong>Diploma, Electronics and Communication Engineering</strong><br />Government Polytechnic College, Coimbatore, 2020 – 2023 (80%)</p>
+
+    <p><strong>Diploma, Electronics and Communication Engineering</strong><br />Government Polytechnic College, Coimbatore, 2020 – 2023</p>
+
   </section>
 
+
+
   <section>
+
     <h2>Contact</h2>
+
     <p><i class="fas fa-envelope"></i> <a href="mailto:parthipanranjith28@gmail.com">parthipanranjith28@gmail.com</a></p>
+
     <p><i class="fas fa-phone"></i> <a href="tel:9600457110">9600457110</a></p>
+
     <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/crazy_king_ranjith" target="_blank">@crazy_king_ranjith</a></p>
+
     <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/ranjith-p28" target="_blank">linkedin.com/in/ranjith-p28</a></p>
+
   </section>
+
+
 
   <!-- Modal -->
+
   <div id="imageModal" class="modal">
+
     <span class="close" onclick="document.getElementById('imageModal').style.display='none'">&times;</span>
+
     <img class="modal-content" id="modalImage">
+
   </div>
 
+
+
   <footer>
+
     <p>© 2025 Ranjith P. All rights reserved.</p>
+
   </footer>
 
+
+
   <script>
+
     function openModal(src) {
+
       var modal = document.getElementById("imageModal");
+
       var modalImg = document.getElementById("modalImage");
+
       modal.style.display = "block";
+
       modalImg.src = src;
+
     }
+
+
 
     window.onclick = function(event) {
+
       var modal = document.getElementById("imageModal");
+
       if (event.target === modal) {
+
         modal.style.display = "none";
+
       }
+
     }
+
+
 
     document.addEventListener("keydown", function(event) {
+
       if (event.key === "Escape") {
+
         document.getElementById("imageModal").style.display = "none";
+
       }
+
     });
 
+
+
     function toggleMode() {
+
       document.body.classList.toggle("light-mode");
+
       const toggleBtn = document.getElementById("modeToggle");
+
       toggleBtn.textContent = document.body.classList.contains("light-mode") ? "🌞" : "🌙";
+
     }
+
   </script>
+
 </body>
+
 </html>
